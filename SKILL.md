@@ -1,7 +1,7 @@
 ---
-name: Simplified Technical English (ASD-STE100)
-description: "Rewrites ambiguous English into ASD-STE100 style — one meaning per word, active voice, simple tense, short sentences. Use when agent output is hard to parse; triggers: simplify this, STE100 rewrite."
-version: 0.1.0
+name: asd-ste100
+description: "Use when English text must be parsed without a human to resolve ambiguity — tool descriptions, error messages, inter-agent instructions, system prompts, status reports — and misreading has a real cost, or when text reads as dense, hedged, or easy to misparse. Triggers: STE100 rewrite, apply Simplified Technical English, rewrite so an agent cannot misread this. Not for creative or marketing copy."
+version: 0.1.1
 ---
 
 # Simplified Technical English (ASD-STE100)
