@@ -21,10 +21,13 @@ More examples, including illustrations of the official STE rules themselves, in 
 
 ## What This Skill Does
 
-1. Reads the input English text for meaning.
-2. Flags every rule violation sentence-by-sentence: ambiguous word choice, present-perfect/complex tense, passive voice with an unclear actor, multi-instruction sentences, oversized noun clusters, dropped words, sentences over length.
-3. Rewrites each flagged sentence — without dropping any fact, condition, or scope qualifier from the original. If a shorter phrasing would lose required precision, it keeps the longer phrasing and flags the trade-off instead of silently simplifying.
-4. Outputs a before/after table plus a short note on anything deliberately left unsimplified.
+1. Picks a mode — **Strict** for procedures, error messages, and tool descriptions; **STE-flavored** for READMEs, PR descriptions, and explanatory prose, which keeps the sentence discipline but not the fixed-vocabulary lockdown.
+2. Reads the input English text for meaning.
+3. Flags every rule violation sentence-by-sentence: ambiguous word choice, present-perfect/complex tense, passive voice with an unclear actor, multi-instruction sentences, oversized noun clusters, dropped words, sentences over length, phrasal verbs, nominalized actions, semicolon joins, hedge stacks, and marketing adjectives.
+4. Rewrites each flagged sentence — without dropping any fact, condition, or scope qualifier from the original. If a shorter phrasing would lose required precision, it keeps the longer phrasing and flags the trade-off instead of silently simplifying.
+5. Outputs a before/after table, a violations-per-100-words self-check, and a short note on anything deliberately left unsimplified.
+
+Every rule it checks is mechanical — you can point at the word or punctuation mark that breaks it. The rules that need taste are left to you.
 
 It does **not** reproduce ASD's official ~900-word approved dictionary — that is ASD's own free-to-download standard. This skill applies the underlying *principle* (plainest available word, used the same way every time) rather than checking against a fixed word list. For certified STE-compliant documentation, use the real standard.
 
@@ -53,6 +56,8 @@ Or paste text and ask Claude to "simplify this for STE100" / "reduce ambiguity i
 Built for: agent-to-agent messages, tool/function descriptions, error messages, system prompts, inter-agent instructions — any English text a machine or non-native reader has to parse without a human to ask.
 
 Not built for: creative writing, marketing copy, or anything where voice and nuance are the point — STE is deliberately flat and literal by design.
+
+One limit worth stating up front: this fixes the form of a text, not its substance. A paragraph with nothing to say comes out short, clean, and still empty.
 
 ## Sources
 
