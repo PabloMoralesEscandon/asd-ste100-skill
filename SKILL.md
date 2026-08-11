@@ -37,6 +37,7 @@ It does **not** reproduce ASD's ~900-word approved dictionary verbatim — that 
 | Sentence length | ≤20 words for instructions/procedures, ≤25 words for descriptions | Long compound/subordinate-clause sentences |
 | Noun clusters | ≤3 words stacked as a noun phrase ("fuel pump valve") | 4+ word noun stacks ("high pressure fuel pump inlet valve assembly") |
 | No ellipsis | Keep the subject, verb, and article explicit even if it reads longer | Drop words to save space ("Files not backed up will be lost" → ambiguous which files) |
+| Keep modality | "The request **may have** failed." stays "may have" | Promote a hedge to a fact ("The request failed.") or invent a certainty the source did not state |
 | Paragraph limits | One topic per paragraph, ≤6 sentences | Multi-topic paragraphs |
 | Lists for sequences | Use a numbered or bulleted list for 3+ steps or conditions | Bury a sequence inside one prose sentence |
 | Domain terms | Keep necessary technical nouns/verbs, but define them once if not common English (STE allows a project-specific glossary beyond its base dictionary) | Use jargon without ever defining it |
@@ -46,6 +47,8 @@ It does **not** reproduce ASD's ~900-word approved dictionary verbatim — that 
 1. Read the input text once for meaning — do not start rewriting before you understand what it must still say afterward.
 2. Walk it sentence by sentence and flag every rule violation (word ambiguity, tense, voice, length, ellipsis, noun stacking).
 3. Rewrite each flagged sentence to fix the violation while preserving the original meaning exactly. If a rewrite would drop necessary precision (a safety condition, a scope qualifier, a number), keep the longer phrasing and flag it instead of silently simplifying.
+   - **Check modality before you commit to a rewrite.** Hedges ("may", "could", "sometimes", "is likely to") carry the author's confidence, and confidence is content. A shorter sentence that upgrades a hedge to a fact is not a simplification — it is a different claim. This is the most common way a well-intentioned STE rewrite goes wrong, because hedges are exactly what a length cap tempts you to cut.
+   - Never add a fact the source did not state. A rewrite that reads better because it supplies a cause, a frequency, or a mechanism has stopped being a rewrite.
 4. Produce a before/after table (see Output Format).
 5. If the input already complies, say so — do not force changes onto compliant text.
 
@@ -66,12 +69,14 @@ Follow the table with a one-line note on anything you deliberately did **not** s
 - Rewrite ambiguous or dense English into short, single-meaning, active-voice sentences.
 - Flag exactly which rule a sentence violates before rewriting it.
 - Preserve every fact, condition, and scope qualifier in the original.
+- Preserve the strength of every hedge, and add no claim the source did not make.
 - Suggest a one-line glossary entry for domain terms that must stay.
 
 **Will not:**
 - Reproduce ASD's official ~900-word dictionary as if it were memorized verbatim — always treat the official download as the source of truth for exact approved wording.
 - Simplify creative, marketing, or persuasive copy where voice and nuance are the point.
 - Silently drop a safety condition, exception, or scope qualifier to shorten a sentence — it will flag the trade-off instead.
+- Convert "may have failed" into "failed", or "could be caused by X" into "X is the cause" — losing a hedge changes the claim.
 - Guarantee an aerospace/defense-grade STE-compliant document; this is a general-purpose clarity tool inspired by STE, not a certified STE authoring tool.
 
 ## Additional Resources
