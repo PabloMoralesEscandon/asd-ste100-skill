@@ -41,12 +41,12 @@ git clone https://github.com/danyuchn/asd-ste100-skill ~/.claude/skills/asd-ste1
 Trigger with a request to simplify or clarify English text:
 
 ```
-/simplify this tool description into STE
+Disambiguate this tool description
 Rewrite this error message so an agent can't misparse it
 Apply ASD-STE100 to this instruction
 ```
 
-Or paste text and ask Claude to "simplify this for STE100" / "reduce ambiguity in this output."
+Or paste text and ask Claude to "disambiguate this" / "apply STE100 to this" / "reduce ambiguity in this output."
 
 ## Scope
 
