@@ -1,7 +1,7 @@
 ---
 name: asd-ste100
 description: "Use when English text must be parsed without a human to resolve ambiguity — tool descriptions, error messages, inter-agent instructions, system prompts, status reports — and misreading has a real cost, or when text reads as dense, hedged, or easy to misparse. Triggers: disambiguate, STE100 rewrite, apply Simplified Technical English, plain-language rewrite, controlled-language rewrite, rewrite so an agent cannot misread this. Not for creative or marketing copy."
-version: 0.3.0
+version: 0.4.0
 ---
 
 # Simplified Technical English (ASD-STE100)
@@ -15,7 +15,7 @@ This skill borrows that same discipline for a different reader: an **AI agent or
 - An agent's output (explanation, instruction, log message, tool description) reads as dense, jargon-heavy, or ambiguous.
 - Text will be consumed by another agent, a translation pipeline, or a non-native English reader, and misparsing has a real cost.
 - You are writing a prompt, system message, or tool description and want to remove ambiguity before a model ever sees it.
-- You want a **before/after** comparison showing exactly which rule was violated and how the rewrite fixes it.
+- You want a **before/after** comparison showing exactly which rule was violated and how the rewrite fixes it. Ask for it — the default output is the rewritten text alone (see Output Format).
 
 This skill is not for creative or marketing copy — STE is deliberately flat and literal. Do not apply it to text where voice, nuance, or persuasion is the point.
 
@@ -86,16 +86,22 @@ These six habits cover most of what makes machine-written English hard to parse.
 
 ## Process
 
-1. Pick the mode (Strict or STE-flavored) and say which in one line.
+1. Pick the mode (Strict or STE-flavored). Say which only when the user asked for the rule table — see Output Format.
 2. Read the input text once for meaning — do not start rewriting before you understand what it must still say afterward.
 3. Walk it sentence by sentence. Flag every rule violation from the Core Rewrite Rules tables and every habit from the Scan Checklist. In STE-flavored mode, flag the lexical rules but do not enforce them.
 4. Rewrite each flagged sentence to fix the violation while preserving the original meaning exactly. If a rewrite would drop necessary precision (a safety condition, a scope qualifier, a number), keep the longer phrasing and flag it instead of silently simplifying.
    - **Check modality before you commit to a rewrite.** Hedges ("may", "could", "sometimes", "is likely to") carry the author's confidence, and confidence is content. A shorter sentence that upgrades a hedge to a fact is not a simplification — it is a different claim. This is the most common way a well-intentioned STE rewrite goes wrong, because hedges are exactly what a length cap tempts you to cut.
    - Never add a fact the source did not state. A rewrite that reads better because it supplies a cause, a frequency, or a mechanism has stopped being a rewrite.
-5. Produce a before/after table (see Output Format).
+5. Output the rewritten text (see Output Format). Keep the mode choice and the rule analysis internal unless the user asked to see them.
 6. If the input already complies, say so — do not force changes onto compliant text.
 
 ## Output Format
+
+**Default: the rewritten text, and nothing else.** Most callers want a result they can paste straight into a tool description, an error string, or a prompt. Print the simplified text on its own. Do not add a preamble about this skill, a mode announcement, a violation count, a summary of what changed, a rule table, or a closing offer to explain further.
+
+The one permitted addition: if step 4 kept a longer phrasing on purpose, add a single line after the text, prefixed `Kept as-is:`, naming the phrase and the precision that would have been lost. Omit the line when there is nothing to report.
+
+**On request: the rule table.** When the user asks to see the reasoning — "show the diff", "which rules did it break", "explain the changes", "before/after" — output this table instead:
 
 ```markdown
 | Rule violated | Original | Simplified |
@@ -112,7 +118,7 @@ Follow the table with a one-line note on anything you deliberately did **not** s
 
 **Will:**
 - Rewrite ambiguous or dense English into short, single-meaning, active-voice sentences.
-- Flag exactly which rule a sentence violates before rewriting it.
+- Return the rewritten text alone by default, and name the rules it applied when the user asks.
 - Preserve every fact, condition, and scope qualifier in the original.
 - Preserve the strength of every hedge, and add no claim the source did not make.
 - Suggest a one-line glossary entry for domain terms that must stay.
