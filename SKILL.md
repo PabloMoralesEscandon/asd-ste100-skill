@@ -1,7 +1,7 @@
 ---
 name: Simplified Technical English (ASD-STE100)
 description: "Rewrites ambiguous English into ASD-STE100 style — one meaning per word, active voice, simple tense, short sentences. Use when agent output is hard to parse; triggers: simplify this, STE100 rewrite."
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Simplified Technical English (ASD-STE100)
@@ -15,7 +15,7 @@ This skill borrows that same discipline for a different reader: an **AI agent or
 - An agent's output (explanation, instruction, log message, tool description) reads as dense, jargon-heavy, or ambiguous.
 - Text will be consumed by another agent, a translation pipeline, or a non-native English reader, and misparsing has a real cost.
 - You are writing a prompt, system message, or tool description and want to remove ambiguity before a model ever sees it.
-- You want a **before/after** comparison showing exactly which rule was violated and how the rewrite fixes it.
+- You want a **before/after** comparison showing exactly which rule was violated and how the rewrite fixes it. Ask for it — the default output is the rewritten text alone (see Output Format).
 
 This skill is not for creative or marketing copy — STE is deliberately flat and literal. Do not apply it to text where voice, nuance, or persuasion is the point.
 
@@ -46,10 +46,16 @@ It does **not** reproduce ASD's ~900-word approved dictionary verbatim — that 
 1. Read the input text once for meaning — do not start rewriting before you understand what it must still say afterward.
 2. Walk it sentence by sentence and flag every rule violation (word ambiguity, tense, voice, length, ellipsis, noun stacking).
 3. Rewrite each flagged sentence to fix the violation while preserving the original meaning exactly. If a rewrite would drop necessary precision (a safety condition, a scope qualifier, a number), keep the longer phrasing and flag it instead of silently simplifying.
-4. Produce a before/after table (see Output Format).
+4. Output the rewritten text (see Output Format). Keep the rule analysis internal unless the user asked to see it.
 5. If the input already complies, say so — do not force changes onto compliant text.
 
 ## Output Format
+
+**Default: the rewritten text, and nothing else.** Most callers want a result they can paste straight into a tool description, an error string, or a prompt. Print the simplified text on its own. Do not add a preamble about this skill, a summary of what changed, a rule table, or a closing offer to explain further.
+
+The one permitted addition: if step 3 kept a longer phrasing on purpose, add a single line after the text, prefixed `Kept as-is:`, naming the phrase and the precision that would have been lost. Omit the line when there is nothing to report.
+
+**On request: the rule table.** When the user asks to see the reasoning — "show the diff", "which rules did it break", "explain the changes", "before/after" — output this table instead:
 
 ```markdown
 | Rule violated | Original | Simplified |
@@ -64,7 +70,7 @@ Follow the table with a one-line note on anything you deliberately did **not** s
 
 **Will:**
 - Rewrite ambiguous or dense English into short, single-meaning, active-voice sentences.
-- Flag exactly which rule a sentence violates before rewriting it.
+- Return the rewritten text alone by default, and name the rules it applied when the user asks.
 - Preserve every fact, condition, and scope qualifier in the original.
 - Suggest a one-line glossary entry for domain terms that must stay.
 

@@ -24,7 +24,9 @@ More examples, including illustrations of the official STE rules themselves, in 
 1. Reads the input English text for meaning.
 2. Flags every rule violation sentence-by-sentence: ambiguous word choice, present-perfect/complex tense, passive voice with an unclear actor, multi-instruction sentences, oversized noun clusters, dropped words, sentences over length.
 3. Rewrites each flagged sentence — without dropping any fact, condition, or scope qualifier from the original. If a shorter phrasing would lose required precision, it keeps the longer phrasing and flags the trade-off instead of silently simplifying.
-4. Outputs a before/after table plus a short note on anything deliberately left unsimplified.
+4. Outputs the rewritten text on its own — no preamble, no change summary — plus a one-line `Kept as-is:` note when it deliberately left something unsimplified.
+
+Ask for the reasoning ("show the diff", "which rules did it break") and it outputs a before/after table naming each rule instead.
 
 It does **not** reproduce ASD's official ~900-word approved dictionary — that is ASD's own free-to-download standard. This skill applies the underlying *principle* (plainest available word, used the same way every time) rather than checking against a fixed word list. For certified STE-compliant documentation, use the real standard.
 
@@ -47,6 +49,8 @@ Apply ASD-STE100 to this instruction
 ```
 
 Or paste text and ask Claude to "simplify this for STE100" / "reduce ambiguity in this output."
+
+You get the rewritten text back and nothing else. To see which rules were applied, add "show the diff" or "explain the changes" to the request.
 
 ## Scope
 
