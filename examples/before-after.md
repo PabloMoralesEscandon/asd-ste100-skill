@@ -10,6 +10,8 @@ These illustrate real ASD-STE100 rules, drawn from public secondary sources (see
 | One part of speech per word | "Oil the valve." | "Apply oil to the valve." | If "oil" is approved only as a noun, using it as a verb breaks the one-word-one-role guarantee. |
 | Precise verb meaning | "Follow the safety instructions." | "Obey the safety instructions." | "Follow" can mean "come after" or "obey" — STE picks the unambiguous one. |
 | Simple tense only | "We have received the technical reports from HQ." | "We received the technical reports from HQ." | Present perfect adds a second parse ("received, and still relevant now?") that simple past avoids. |
+| Verb, not noun | "Perform an inspection of the filter." | "Inspect the filter." | The noun form hides the action and adds a filler verb that carries no meaning. |
+| No phrasal verbs | "Take off the access panel." | "Remove the access panel." | "Take off" also means "depart" and "deduct" — the two words together do not predict the meaning. |
 
 ## Part 2 — Applied to Agent Output
 
@@ -66,6 +68,22 @@ Note also that "may have failed" keeps a compound verb form that the simple-tens
 Two deliberate calls worth stating rather than hiding:
 - "should proceed to consume" became the imperative "read". STE permits this for instructions, where a recommendation addressed to the executing agent is a command. Do not make the same move in descriptive text.
 - The final sentence is **new**. The original warned about partial artifacts without saying what to do about it. Adding the check makes the warning actionable, but it is added content, so it is called out here rather than passed off as a rewrite. If the source's silence was deliberate, drop the sentence.
+
+### Example D — README prose (STE-flavored mode)
+
+**Before:**
+> Our caching layer is designed to slot seamlessly into your existing stack with minimal friction and no vendor lock-in; it leverages semantic similarity to dramatically reduce the cache misses that traditionally plague LLM workloads.
+
+**Violations flagged:**
+- Marketing adjectives and claims without measurement ("seamlessly", "minimal friction", "dramatically").
+- Semicolon joining two separate ideas.
+- Nominalization and soft phrasing ("is designed to slot into", "leverages").
+- 36 words, over the 25-word descriptive cap.
+
+**After:**
+> A normal cache matches requests by exact text, so a small change in wording causes a cache miss. This cache compares the meaning of a new prompt against the prompts it already holds. It runs alongside your current stack and stores no data outside it.
+
+Flavored mode kept the explanatory rhythm and did not force one fixed term per concept. It still cut the marketing adjectives, the semicolon, and the length.
 
 ## How to Read These Examples
 
