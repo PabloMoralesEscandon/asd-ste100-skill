@@ -1,6 +1,6 @@
 ---
 name: asd-ste100
-description: Rewrite or author English for unambiguous agent and machine use, or apply ASD-STE100 controlled English. Use when the user explicitly requests STE, ASD-STE100, Simplified Technical English, or controlled English, or when the output is a system prompt, tool or function description, error or status message, inter-agent instruction, or other machine-consumed message. Use STE Compliance mode only when the user explicitly requests compliance with ASD-STE100 or STE, or when the surrounding system explicitly requires STE compliance. Do not trigger only because ordinary human-facing prose is complex or technical.
+description: Rewrite or author English for unambiguous agent and machine use, or apply ASD-STE100 controlled English. Use when the user explicitly requests STE, ASD-STE100, Simplified Technical English, or controlled English, or when the output is a system prompt, tool or function description, error or status message, inter-agent instruction, or other machine-consumed message. Do not trigger only because ordinary human-facing prose is complex or technical.
 ---
 
 # ASD-STE100 Writing
@@ -32,7 +32,7 @@ Use Agent/Strict mode for a generic controlled-English request that does not exp
 7. Avoid ambiguous pronouns, unnecessary synonyms, complex noun clusters, and unnecessarily difficult language.
 8. In Agent/Strict mode, optimize the output for reliable machine and agent parsing, not for stylistic variety.
 
-If a language rule conflicts with semantic preservation, preserve the meaning. Report the unresolved rule only when the user requests compliance details or when the output must make a compliance claim.
+If a language rule conflicts with semantic preservation, preserve the meaning. In Agent/Strict mode, report an unresolved rule only when the user requests details. In STE Compliance mode, always report unresolved departures and verification limitations. Do not make a compliance claim that hides an unresolved item.
 
 ## Workflow
 
@@ -41,7 +41,24 @@ If a language rule conflicts with semantic preservation, preserve the meaning. R
 3. Load only the references required for the selected mode and task.
 4. Rewrite or author the text with explicit actors, conditions, and stable terminology.
 5. Compare the result with the source. Reject any change to meaning, negation, certainty, requirement strength, or scope.
-6. Run the applicable checks. Return only the format that the user or consuming system requested.
+6. If the input requires no changes under the completed checks, say so. Do not force changes onto the text.
+7. Run the applicable checks. Return the requested format or the default format below.
+
+## Output Format
+
+Follow an explicit format from the user or consuming system.
+
+By default, return the rewritten text and nothing else. Do not add a preamble, mode announcement, violation count, change summary, rule table, or closing offer to explain the result. If no changes are necessary, return `No changes are required.`
+
+In STE Compliance mode, append a `Departures:` list when unresolved departures or verification limitations exist. Use one bullet for each item and state the affected text or location, the unresolved rule or limitation, and the reason. Do this even when the user did not request an explanation. Do not add this list when there are no unresolved items. In Agent/Strict mode, report retained language or unresolved rules only when the user requests details.
+
+When the user asks to "show the diff," "explain the changes," identify broken rules, or provide a before-and-after comparison, return this table instead of the default bare rewrite:
+
+| Source sentence | Rule | Revised text | Change |
+|---|---|---|---|
+| Original sentence | Applicable rule | Rewritten sentence | Concise description of the change |
+
+Add the selected mode after the table. Identify any wording that remains unchanged because a rewrite would alter the meaning. In STE Compliance mode, also include every unresolved departure and verification limitation.
 
 ## Reference Routing
 

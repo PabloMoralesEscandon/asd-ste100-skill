@@ -12,11 +12,11 @@ This repository does not reproduce the official approved-word dictionary. Do not
 
 Before a lexical compliance check, identify:
 
-- the applicable ASD-STE100 issue;
-- the authorized official dictionary for that issue;
-- the project or organization dictionary;
-- the document domain and intended audience; and
-- any required terminology, identifiers, units, and product names.
+- The applicable ASD-STE100 issue.
+- The authorized official dictionary for that issue.
+- The project or organization dictionary.
+- The document domain and intended audience.
+- Any required terminology, identifiers, units, and product names.
 
 If an input is unavailable, state the limitation. Continue with structural review only when that still helps the user.
 
@@ -49,12 +49,12 @@ Use [pos-analysis.md](pos-analysis.md) for a word whose grammatical role is uncl
 
 For each project term, record:
 
-- the exact term and spelling;
-- its category as a technical name or technical verb;
-- one definition;
-- its permitted forms;
-- any prohibited synonyms; and
-- the approving source or owner.
+- The exact term and spelling.
+- Its category as a technical name or technical verb.
+- One definition.
+- Its permitted forms.
+- Any prohibited synonyms.
+- The approving source or owner.
 
 Do not create a project term merely to avoid an official vocabulary restriction. The term must represent necessary domain meaning.
 
@@ -63,7 +63,7 @@ Do not create a project term merely to avoid an official vocabulary restriction.
 Use one of these statuses:
 
 - **Lexically verified:** Every general word and project term was checked against authorized sources.
-- **Structurally reviewed; lexical verification incomplete:** Structural rules were checked, but one or more dictionary inputs or entries were unavailable.
+- **Structurally reviewed, lexical verification incomplete:** Structural rules were checked, but one or more dictionary inputs or entries were unavailable.
 - **Not compliant:** At least one verified use violates an applicable rule and remains unresolved.
 
 Lexical verification is only one part of compliance. Do not use `STE compliant` when only automated checks, memory, secondary summaries, or plain-language judgment support the result.

@@ -80,9 +80,9 @@ Compare the final text against the source sentence by sentence.
 Use only a label supported by the review:
 
 - **STE compliance checks passed:** All applicable structural, lexical, terminology, and format checks passed against authorized sources, and all required professional or organizational review is complete.
-- **Agent review passed; formal review pending:** The agent found no unresolved issue, but required professional or organizational review is not complete or not verified.
+- **Agent review passed, formal review pending:** The agent found no unresolved issue, but required professional or organizational review is not complete or not verified.
 - **Compliant except for documented departures:** All unresolved departures are listed, and none is hidden.
-- **Structurally reviewed; lexical compliance not verified:** Structural checks passed, but dictionary or terminology verification is incomplete.
+- **Structurally reviewed, lexical compliance not verified:** Structural checks passed, but dictionary or terminology verification is incomplete.
 - **Not compliant:** One or more applicable checks failed.
 
 ## Exception Record

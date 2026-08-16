@@ -4,19 +4,24 @@ Use these rules for STE Compliance mode. The official ASD-STE100 specification a
 
 ## Contents
 
-- Compliance boundary and approved vocabulary
-- Verbs, voice, tense, and modality
-- Sentences and noun phrases
-- Paragraphs, punctuation, and difficult language
-- Consistency and sources
+- Compliance Boundary
+- Approved Vocabulary
+- Verbs and Voice
+- Tense and Modality
+- Sentences
+- Noun Phrases and References
+- Paragraphs, Lists, and Punctuation
+- Difficult and Ambiguous Language
+- Consistency Rules
+- Sources
 
 ## Compliance Boundary
 
 Full compliance requires all of these sources:
 
-- the applicable official ASD-STE100 issue;
-- the official approved-word dictionary for that issue; and
-- the organization's approved technical names, technical verbs, and terminology decisions.
+- The applicable official ASD-STE100 issue.
+- The official approved-word dictionary for that issue.
+- The organization's approved technical names, technical verbs, and terminology decisions.
 
 If an authoritative dictionary is unavailable, apply the structural rules and label lexical compliance as unverified. Never claim full compliance from this summary alone.
 

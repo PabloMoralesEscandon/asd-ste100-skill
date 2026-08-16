@@ -80,12 +80,11 @@ Express possibility explicitly, for example, `It is possible that the request fa
 
 Before delivery, verify that:
 
-- each pronoun has one clear antecedent;
-- each instruction has one action;
-- each condition controls an explicit action;
-- each alternative has an explicit outcome;
-- negation and exceptions keep their original logical reach;
-- each concept has one stable name;
-- no rewrite changes causality; and
-- the output matches the required format exactly.
-
+- Each pronoun has one clear antecedent.
+- Each instruction has one action.
+- Each condition controls an explicit action.
+- Each alternative has an explicit outcome.
+- Negation and exceptions keep their original logical reach.
+- Each concept has one stable name.
+- No rewrite changes causality.
+- The output matches the required format exactly.
