@@ -1,6 +1,6 @@
 ---
 name: asd-ste100
-description: Rewrite or author English for unambiguous agent and machine use, or apply ASD-STE100 controlled English. Use when the user explicitly requests STE, ASD-STE100, Simplified Technical English, controlled English, or when the output is a system prompt, tool or function description, error message, inter-agent instruction, or other machine-consumed message. Do not trigger only because ordinary human-facing prose is complex.
+description: Rewrite or author English for unambiguous agent and machine use, or apply ASD-STE100 controlled English. Use when the user explicitly requests STE, ASD-STE100, Simplified Technical English, or controlled English, or when the output is a system prompt, tool or function description, error or status message, inter-agent instruction, or other machine-consumed message. Use STE Compliance mode only when the user explicitly requests compliance with ASD-STE100 or STE, or when the surrounding system explicitly requires STE compliance. Do not trigger only because ordinary human-facing prose is complex or technical.
 ---
 
 # ASD-STE100 Writing
@@ -16,18 +16,18 @@ Do not apply this skill automatically to ordinary human-facing prose. Complexity
 
 ## Modes
 
-- **Agent/Strict mode:** Use for system prompts, tool and function descriptions, error messages, inter-agent communication, and machine-consumed instructions. Optimize for deterministic interpretation and reliable parsing.
-- **STE Compliance mode:** Use when the user requests ASD-STE100 compliance or the text is controlled technical documentation. Apply the official STE constraints as rigorously as the available dictionary and project terminology permit.
+- **Agent/Strict mode:** Use for system and agent instructions, tool and function descriptions, error and status messages, inter-agent communication, and other machine-consumed text. Optimize for deterministic interpretation and reliable parsing.
+- **STE Compliance mode:** Use only when the user explicitly requests compliance with ASD-STE100 or STE, or when the surrounding system explicitly requires STE compliance. Apply the official STE constraints as rigorously as the available dictionary and project terminology permit.
 
-If the user explicitly selects a mode, use it. Otherwise, use Agent/Strict mode for machine-consumed text and STE Compliance mode for explicit STE requests.
+Use Agent/Strict mode for a generic controlled-English request that does not explicitly require STE compliance. Technical subject matter alone does not select STE Compliance mode.
 
 ## Nonnegotiable Requirements
 
-1. Preserve the original meaning, facts, conditions, scope, relationships, and uncertainty.
+1. Preserve the original meaning, facts, conditions, scope, relationships, negation, and uncertainty.
 2. Do not invent a fact, cause, action, frequency, requirement, or guarantee.
 3. Do not convert an uncertain statement into a certain statement.
 4. Preserve the force of requirements. Do not interchange `must`, `should`, `may`, and `can` unless the source authorizes that change.
-5. Preserve literal identifiers, placeholders, code, commands, paths, field names, enum values, units, and error codes unless the user asks to change them.
+5. Preserve literal identifiers, placeholders, code, commands, paths, field names, enum values, units, error codes, and required formats unless the user asks to change them.
 6. Prefer active voice, simple sentence structures, one instruction per sentence, and one term for each concept.
 7. Avoid ambiguous pronouns, unnecessary synonyms, complex noun clusters, and unnecessarily difficult language.
 8. In Agent/Strict mode, optimize the output for reliable machine and agent parsing, not for stylistic variety.
@@ -40,7 +40,7 @@ If a language rule conflicts with semantic preservation, preserve the meaning. R
 2. Extract the source claims, actors, actions, conditions, exceptions, scope, modality, and protected literals.
 3. Load only the references required for the selected mode and task.
 4. Rewrite or author the text with explicit actors, conditions, and stable terminology.
-5. Compare the result with the source. Reject any change to meaning, certainty, requirement strength, or scope.
+5. Compare the result with the source. Reject any change to meaning, negation, certainty, requirement strength, or scope.
 6. Run the applicable checks. Return only the format that the user or consuming system requested.
 
 ## Reference Routing
