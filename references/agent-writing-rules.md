@@ -64,7 +64,7 @@ For new normative text, use modal verbs consistently:
 - `may`: permission
 - `can`: capability
 
-Express possibility explicitly, for example, `It is possible that the request failed.` Do not use one modal for permission and possibility in the same instruction set. When rewriting, preserve the source force. Ask the author to resolve a modal only when its ambiguity affects execution.
+Express possibility explicitly, for example, `It is possible that the request failed.` Do not use one modal for permission and possibility in the same instruction set. When rewriting, preserve the source force. If modal ambiguity affects execution and the intended meaning cannot be determined from context, preserve the ambiguity and report it to the caller.
 
 ## Machine-Sensitive Output
 
@@ -88,3 +88,4 @@ Before delivery, verify that:
 - each concept has one stable name;
 - no rewrite changes causality; and
 - the output matches the required format exactly.
+
