@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASD-STE100 Writing"
+  short_description: "Write clear agent text or compliant STE"
+  default_prompt: "Use $asd-ste100 to rewrite this text without changing its meaning."
