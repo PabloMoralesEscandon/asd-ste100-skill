@@ -37,9 +37,19 @@ The supporting references cover [dictionary access](references/dictionary-access
 
 ## Installation
 
+### Claude Code
+
 ```bash
 git clone https://github.com/PabloMoralesEscandon/asd-ste100-skill ~/.claude/skills/asd-ste100
 ```
+
+### Codex
+
+```bash
+git clone https://github.com/PabloMoralesEscandon/asd-ste100-skill ~/.agents/skills/asd-ste100
+```
+
+Codex detects skills in `~/.agents/skills` automatically. If the skill does not appear, restart Codex.
 
 ## Usage
 
